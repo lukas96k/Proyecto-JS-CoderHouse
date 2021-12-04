@@ -1,4 +1,3 @@
-import ItemListContainer from './ItemListContainer';
 import CartWidget from './CartWidget';
 const NavBar = () =>{
 	return <header>
@@ -12,7 +11,6 @@ const NavBar = () =>{
 				  </ul>
 				  <CartWidget/>
 				</nav>
-				<ItemListContainer greeting="Bienvenido"/>
 			</header>
 }
 export default NavBar;
