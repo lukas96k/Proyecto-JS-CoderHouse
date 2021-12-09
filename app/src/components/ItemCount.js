@@ -14,7 +14,7 @@ const ItemCount = ({initial, stock}) =>{
   	}
 
  	const disminuirContador = () => {
- 		if (stock >= contador && contador!=0){
+ 		if (stock >= contador && contador!==0){
 	 		setContador (contador - 1)
 	 		setStock (contadorStock + 1)
 	 		console.log(contador)
