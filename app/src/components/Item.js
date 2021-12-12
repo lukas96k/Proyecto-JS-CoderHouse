@@ -1,12 +1,8 @@
 const Item = ({items}) =>{
-	console.log(items)
-	console.log(typeof items)
-	return <div>
-		<p>Id: {items.id}</p>
+	return <div className="justify-content-center">
 		<p>Titulo: {items.title}</p>
-		<p>Descripcion: {items.description}</p>
-		<p>Precio: {items.price}</p>
-		<p>Imagen: {items.pictureUrl}</p>
+		<p>Miniatura: {items.pictureUrl}</p>
+		<p>Precio: ${items.price}</p>
 	</div>
 }
 export default Item;
