@@ -6,8 +6,6 @@ const ItemCount = ({initial, stock}) =>{
  		if (stock >= contador){
  			setContador (contador + 1)
  			setStock (contadorStock - 1)
- 			console.log(contador)
-	 		console.log(contadorStock)
  		} else {
  			console.log('Sin stock')
  		}
@@ -17,13 +15,9 @@ const ItemCount = ({initial, stock}) =>{
  		if (stock >= contador && contador!==0){
 	 		setContador (contador - 1)
 	 		setStock (contadorStock + 1)
-	 		console.log(contador)
-	 		console.log(contadorStock)
  		}else if (contador >= stock){
  			setContador (contador - 1)
 	 		setStock (contadorStock + 1)
-	 		console.log(contador)
-	 		console.log(contadorStock)
  		}
  	}
 
@@ -32,7 +26,6 @@ const ItemCount = ({initial, stock}) =>{
 	}
 
 	return <div>
-				<p>Producto</p>
 				<div>
 					<button id="botonRestar" onClick={disminuirContador}>-</button>
 					<div>
