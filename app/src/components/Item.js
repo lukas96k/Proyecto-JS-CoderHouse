@@ -1,4 +1,4 @@
-import ItemCount from './ItemCount';
+import React from "react";
 import ItemDetailContainer from './ItemDetailContainer';
 import {Routes,Route} from 'react-router-dom';
 import {NavLink} from 'react-router-dom';
@@ -7,10 +7,9 @@ const Item = ({items}) =>{
 		<p>Titulo: {items.title}</p>
 		<p>Miniatura: {items.pictureUrl}</p>
 		<p>Precio: ${items.price}</p>
-		<ItemCount initial={1} stock={5}/>
-		<NavLink to="/item/id">Ver detalle </NavLink>
-		<Routes>`texto de cadena de caracteres`
-                <Route path='/item/:id' element={<ItemDetailContainer/>}/>
+		<NavLink to={`/item/${items.id}`}>Ver detalle </NavLink>
+		<Routes>
+            <Route path={"/item/:id"} element={<ItemDetailContainer/>}/>
         </Routes>
 	</div>
 }

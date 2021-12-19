@@ -20,7 +20,7 @@ const ItemListContainer = () =>{
 	if(productos.length===0){
 		return (
 			<div> 
-				<h2> Cargando... </h2>
+				<h4> Cargando... </h4>
 			</div>
 		)
 	}else {

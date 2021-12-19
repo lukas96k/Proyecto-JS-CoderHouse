@@ -21,10 +21,6 @@ const ItemCount = ({initial, stock}) =>{
  		}
  	}
 
-	const onAdd = () => {
-		
-	}
-
 	return <div>
 				<div>
 					<button id="botonRestar" onClick={disminuirContador}>-</button>

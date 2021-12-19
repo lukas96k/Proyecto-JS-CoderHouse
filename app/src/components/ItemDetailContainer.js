@@ -2,7 +2,6 @@ import React from "react";
 import {useState, useEffect} from "react";
 import ItemDetail from "./ItemDetail";
 import ListaDeProductos from './ListaDeProductos';
-import {useParams} from "react-router-dom";
 
 const getItem = new Promise((res, rej)=>{
 	setTimeout(()=>{
@@ -16,8 +15,6 @@ const getItem = new Promise((res, rej)=>{
 
 const ItemDetailContainer = () => {
   const [detail, setDetail] = useState(ListaDeProductos);
-  const { idProd } = useParams()
-  console.log(idProd);
 	useEffect(()=>{
 		getItem.then((resultado)=>{
 			setDetail (resultado)
@@ -25,7 +22,7 @@ const ItemDetailContainer = () => {
 	},[])
 	return (
 		<div>
-		<ItemDetail item={detail}/>
+			<ItemDetail item={detail}/>
 		</div>
 	)
 };

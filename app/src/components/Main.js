@@ -6,9 +6,8 @@ function Main() {
         <main>
             <Routes>
                 <Route path="/categoria/inicio" element={<Main/>}/>
-                <Route path="/categoria/:productos" element={<ItemListContainer/>}/>
+                <Route path="/categoria/productos" element={<ItemListContainer/>}/>
             </Routes>
-            <ItemDetailContainer/>
         </main>
     );
 }
