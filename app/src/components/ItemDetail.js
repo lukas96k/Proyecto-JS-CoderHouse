@@ -1,12 +1,11 @@
 import React from "react";
 import ItemCount from './ItemCount';
-import {useParams} from "react-router-dom";
-const onAdd = () => {
+// import {useParams} from "react-router-dom";
+// const onAdd = () => {
 		
-}
+// }
 const ItemDetail = ({item}) => {
-  const { idProd } = useParams()
-  console.log(`idProd: ${idProd}`);
+  // var { idProd } = useParams()
   return (
     <div className="container bg-light border">
       <h4>Detalles</h4>

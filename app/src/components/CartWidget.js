@@ -1,3 +1,6 @@
+// import { useContext } from "react";
+// import { Context } from "react";
+
 const CartWidget = () =>{
 	return (
 		<div>

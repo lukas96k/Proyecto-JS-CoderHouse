@@ -29,7 +29,7 @@ const ItemCount = ({initial, stock}) =>{
 					</div>
 					<button id="botonSumar" onClick={aumentarContador}>+</button>
 				</div>
-				<button id="botonAceptar" onClick={onAdd}>Sumar al carrito</button>
+				<button id="botonAceptar">Sumar al carrito</button>
 			</div>
 }
 export default ItemCount;
