@@ -7,8 +7,8 @@ function Main() {
             <Routes>
                 <Route path="/categoria/inicio" element={<Main/>}/>
                 <Route path="/categoria/productos" element={<ItemListContainer/>}/>
+                <Route path="/item/:idProd" element={<ItemDetailContainer/>}/>
             </Routes>
-            <ItemDetailContainer/>
         </main>
     );
 }

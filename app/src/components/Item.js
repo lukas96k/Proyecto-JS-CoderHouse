@@ -8,9 +8,6 @@ const Item = ({items}) =>{
 		<p>Miniatura: {items.pictureUrl}</p>
 		<p>Precio: ${items.price}</p>
 		<NavLink to={`/item/${items.id}`}>Ver detalle </NavLink>
-		<Routes>
-            <Route path={"/item/:id"} element={<ItemDetailContainer/>}/>
-        </Routes>
 	</div>
 }
 export default Item;
