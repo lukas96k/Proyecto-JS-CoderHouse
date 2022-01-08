@@ -16,16 +16,15 @@ const getItem = new Promise((res, rej)=>{
 
 const ItemDetailContainer = () => {
 	const { idProd } = useParams()
-  const [detail, setDetail] = useState({});
+  	const [detail, setDetail] = useState({});
 	useEffect(()=>{
 		getItem.then((resultado)=>{
-
 			if (!idProd){
 				setDetail (resultado)
 			}else{
-				setDetail (resultado[parseInt(idProd)])
+				let filtro = resultado.filter(x => x.id == idProd) 
+				setDetail (filtro[0])
 			}
-			
 		})
 	},[idProd]) 
 	return (

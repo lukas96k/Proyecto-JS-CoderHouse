@@ -5,8 +5,8 @@ function Main() {
     return (
         <main>
             <Routes>
-                <Route path="/categoria/inicio" element={<Main/>}/>
-                <Route path="/categoria/productos" element={<ItemListContainer/>}/>
+                <Route path="/" element={<ItemListContainer/>}/>
+                <Route path="/categoria/:idSeccion" element={<ItemListContainer/>}/>
                 <Route path="/item/:idProd" element={<ItemDetailContainer/>}/>
             </Routes>
         </main>
