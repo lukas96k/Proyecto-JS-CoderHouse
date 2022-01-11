@@ -1,35 +1,29 @@
-import {useState} from "react"
-const ItemCount = ({initial, stock}) =>{
+import { useState, useEffect } from "react";
+const ItemCount = ({initial, min, stock, setCantidad}) =>{
  	const [contador, setContador]= useState(initial)
- 	const [contadorStock, setStock]= useState(stock)
  	const aumentarContador = () => {
- 		if (stock >= contador){
- 			setContador (contador + 1)
- 			setStock (contadorStock - 1)
- 		} else {
- 			console.log('Sin stock')
- 		}
+		contador < stock ? setContador(contador + 1) : console.log("Máximo alcanzado");
   	}
-
  	const disminuirContador = () => {
- 		if (stock >= contador && contador!==0){
-	 		setContador (contador - 1)
-	 		setStock (contadorStock + 1)
- 		}else if (contador >= stock){
- 			setContador (contador - 1)
-	 		setStock (contadorStock + 1)
- 		}
+		contador > min ? setContador(contador - 1) : console.log("Mínimo alcanzado");
  	}
+
+	useEffect(() => {
+		setCantidad(contador);
+	}, [contador, setCantidad]);
 
 	return <div>
 				<div>
-					<button id="botonRestar" onClick={disminuirContador}>-</button>
+					<div>	
+						<button id="botonRestar" onClick={disminuirContador}>-</button>
+					</div>
 					<div>
 						<p>{contador}</p>
 					</div>
-					<button id="botonSumar" onClick={aumentarContador}>+</button>
+					<div>
+						<button id="botonSumar" onClick={aumentarContador}>+</button>
+					</div>
 				</div>
-				<button id="botonAceptar">Sumar al carrito</button>
 			</div>
 }
 export default ItemCount;
