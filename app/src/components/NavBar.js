@@ -6,11 +6,14 @@ const NavBar = () =>{
 				<nav className="navbar navbar-expand-sm bg-light justify-content-center">
 				  <ul className="navbar-nav">
 				    <li className="nav-item"><NavLink className="nav-link" to="/">Inicio</NavLink></li>
-				    <li className="nav-item"><NavLink className="nav-link" to="/categoria/informatica">Informatica</NavLink></li>
-				    <li className="nav-item"><NavLink className="nav-link" to="/categoria/oficina">OFicina</NavLink></li>
-					<li className="nav-item"><NavLink className="nav-link" to="/categoria/cart"> <CartWidget/> </NavLink></li>
+				    <li className="nav-item"><NavLink className="nav-link" to="/categoria/informatica">Informática</NavLink></li>
+				    <li className="nav-item"><NavLink className="nav-link" to="/categoria/oficina">Oficina</NavLink></li>
+					<li className="nav-item">
+						<NavLink className="nav-link" to="/cart">
+							<CartWidget/> 
+						</NavLink>
+					</li>
 				  </ul>
-				  
 				</nav>
 			</header>
 }

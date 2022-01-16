@@ -3,58 +3,80 @@ import {useState, useContext} from "react";
 import ItemCount from './ItemCount';
 import {Link} from 'react-router-dom';
 import {CartContext} from "./CartContext";
+import {Button,Card,Typography,ButtonGroup,CardMedia} from '@mui/material';
+import { Box } from '@mui/system';
 
 const ItemDetail = ({item}) => {
-  const { carrito, agregarProducto, isInCart } = useContext(CartContext); 
+  const { agregarProducto, isInCart } = useContext(CartContext); 
   const [cantidad, setCantidad] = useState (1);
-  const verCarrito = () => {
-      console.log(carrito);
-  };
   const handleCantidad= () => {
     item.quantity = cantidad;
-    item.stock -= cantidad;
   };
   const handleAgregarProducto = () => {
     if (cantidad > 0) {
       handleCantidad();
       agregarProducto(item);
-      console.log(carrito);
     }
   };
   return (
-    <div className="container bg-light border">
-      <h4>Detalles</h4>
-      <p>ID del producto:{item.id}</p>
-      <p>Producto: {item.title}</p>
-      <p>Imagen: {item.pictureUrl}</p>
-      <p>Descripción{item.description}</p>
-      <p>Precio: ${item.price}</p>
-      {!isInCart(item.id) ? (
-					<>
-            <ItemCount 
-              initial={1} 
-              min={0} 
-              stock={item.stock} 
-              setCantidad={setCantidad}
+    <Box>
+      <Card
+        key={item.id}
+        sx={{
+          width: '250px',
+          maxHeight: '650px',
+        }}
+      >
+        <CardMedia component="img" title={item.image} image={item.image} />
+        <Typography variant="h5" color="initial">
+          {item.title}
+        </Typography>
+        <Typography variant="body2">
+          {item.description}
+        </Typography>
+        <Typography variant="body2">
+          {item.stock} disponibles
+        </Typography>
+        <Typography variant="h5" color="initial">
+          ${item.price}
+        </Typography>
+  
+        {!isInCart(item.id) ? (
+          <>
+            <ItemCount
+                initial={1} 
+                min={0} 
+                stock={item.stock} 
+                precio={item.price}
+                setCantidad={setCantidad}
             />
-						<button
-							onClick={handleAgregarProducto}
-						>
-							Agregar al Carrito {cantidad}
-						</button>
-					</>
-				) : (
-					<>
-							<button>
-								<Link to="/"> Volver al Inicio </Link>
-							</button>
-							<button>
-							 <Link to="/cart" onClick={verCarrito}>Ver carrito</Link>
-							</button>
-					</>
-				)
-      }
-    </div>
+            <Button
+              sx={{ margin: '1rem' }}
+              variant="contained"
+              color="success"
+              onClick={handleAgregarProducto}
+            >
+              Agregar al Carrito
+            </Button>
+          </>
+        ) : (
+          <>
+            <ButtonGroup
+              variant="text"
+              color="primary"
+              aria-label=""
+            >
+              <Button variant="contained" color="primary">
+                <Link to="/"> Volver al Inicio </Link>
+              </Button>
+              <Button variant="text" color="success">
+                <Link to="/cart">Terminar mi Compra</Link>
+              </Button>
+            </ButtonGroup>
+          </>
+        )}
+      </Card>
+    </Box>
   );
 };
 

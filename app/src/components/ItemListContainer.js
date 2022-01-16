@@ -1,49 +1,60 @@
 import {useState, useEffect} from "react";
 import ItemList from './ItemList';
-import ListaDeProductos from './ListaDeProductos';
 import {useParams} from "react-router-dom";
+import { collection, query, where, getDocs } from "firebase/firestore";
+import { Box } from '@mui/system';
+import { db } from './Firebase';
+import { CircularProgress } from '@mui/material';
+
 const ItemListContainer = () =>{
+	
+	const [loading, setLoading] = useState(false);
 	const [productos, setProductos] = useState ([])
-	const {idSeccion} = useParams()
-	useEffect(()=>{
-		const promesa = new Promise((res, rej)=>{
-			setTimeout(()=>{
-				if (idSeccion===undefined) {
-					res(ListaDeProductos)
-				} else if (idSeccion === "informatica"){
-					let listaFiltrada = ListaDeProductos.filter(x => x.category === "informatica") 
-					res(listaFiltrada)
-				} else if (idSeccion === "oficina"){
-					let listaFiltrada = ListaDeProductos.filter(x => x.category === "oficina")
-					res(listaFiltrada)
-				}else{
-					rej()
-				}
-			},2000)
-		})
+	const {idSeccion} = useParams();
+	
+	const formatearYsetear = (arrayDoc) => {
+		setProductos (arrayDoc.map(documento=>{
+			return {...documento.data(), id: documento.id}
+		}))
+	}
 
-		if (!idSeccion){
-			promesa.then((resultado)=>{
-				setProductos (resultado)
-			})
-		}else if (idSeccion === "informatica"){
-			promesa.then((resultado)=>{
-				setProductos (resultado)
-			})
-		}else{
-			promesa.then((resultado)=>{
-				setProductos (resultado)
-			})
+	const traerUsuarios = async (id) =>{
+		const productosDB = collection(db, "ListaDeProductos");
+		if (id===undefined) {
+			const consulta = await getDocs(productosDB)
+			formatearYsetear(consulta.docs)
+		}else if (id === "informatica"){
+			const constraint = where("category", "==", "informatica")
+			const customQuery = query(productosDB,constraint)
+			const consulta = await getDocs(customQuery)
+			formatearYsetear(consulta.docs)
+		}else if (id === "oficina"){
+			const constraint = where("category", "==", "oficina")
+			const customQuery = query(productosDB,constraint)
+			const consulta = await getDocs(customQuery)
+			formatearYsetear(consulta.docs)
 		}
-	},[idSeccion])
+		setLoading(false)
+	}
+	useEffect(()=>{
+		setLoading(true);
+		traerUsuarios(idSeccion);
+	}, [idSeccion]);
 
-	return (
-		<>
-		<div className="container bg-light border">
-			<ItemList productos={productos}/>
-		</div>
-		</>
-	)
-}
+	return loading ? (
+		<Box
+			sx={{
+				display: 'flex',
+				padding: '1rem',
+				right: '50%',
+				top: '25%',
+			}}
+		>
+			<CircularProgress />
+		</Box>
+	) : (
+		<ItemList productos={productos} />
+	);
+};
 
 export default ItemListContainer;

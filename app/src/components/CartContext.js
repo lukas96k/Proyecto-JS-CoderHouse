@@ -20,15 +20,24 @@ const CartProvider = ({children}) => {
 		}
     }
     const isInCart =(id)=>{
-        return carrito.some((prod) => prod.id == id);
+        return carrito.some((item) => item.id == id);
     }
+    const totalCantidad = () => {
+		return carrito.reduce((acc, item) => acc + item.quantity, 0);
+	};
+
+	const totalCompra = () => {
+		return carrito.reduce((acc, item) => acc + item.price * item.quantity, 0);
+	};
     const valorContexto = {
         carrito,
         setCarrito,
         agregarProducto,
         eliminarProducto,
         vaciarCarrito,
-        isInCart
+        isInCart,
+        totalCantidad,
+        totalCompra
     }
 
     return (

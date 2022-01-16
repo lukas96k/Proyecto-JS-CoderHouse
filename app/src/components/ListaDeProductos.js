@@ -7,7 +7,7 @@ const ListaDeProductos = [
         quantity: 0,
         stock: 50, 
         price: 900, 
-        pictureUrl: "url a insertar" },
+        image: 'Gigabyte-A69HM-E33-V2.png'},
     { 
         id: 1, 
         category: "informatica",
@@ -16,7 +16,7 @@ const ListaDeProductos = [
         quantity: 0,
         stock: 50,
         price: 300, 
-        pictureUrl: "url a insertar" },
+        image: "A10-7870K-4.0.jpg" },
     { 
         id: 2, 
         category: "informatica",
@@ -25,7 +25,7 @@ const ListaDeProductos = [
         quantity: 0,
         stock: 50,
         price: 600, 
-        pictureUrl: "url a insertar" },
+        image: "Memoria-RAM-DRR3-Kingston-Hyperx-1866mhz.png" },
     { 
         id: 3, 
         category: "oficina",
@@ -34,7 +34,7 @@ const ListaDeProductos = [
         quantity: 0,
         stock: 50,
         price: 900, 
-        pictureUrl: "url a insertar" },
+        image: "lampara.jpg" },
     { 
         id: 4, 
         category: "oficina",
@@ -43,16 +43,16 @@ const ListaDeProductos = [
         quantity: 0,
         stock: 50,
         price: 300, 
-        pictureUrl: "url a insertar" },
+        image: "archivero.png" },
     { 
         id: 5, 
         category: "oficina",
         title: "Silla de escritorio", 
-        description: "Descripcion Prod Oficina3",
+        description: "Descripcion Prod Oficina 3",
         quantity: 0,
         stock: 50, 
         price: 600, 
-        pictureUrl: "url a insertar" },
+        image: "silla.png" },
     { 
         id: 6, 
         category: "oficina",
@@ -61,6 +61,6 @@ const ListaDeProductos = [
         quantity: 0,
         stock: 50,
         price: 1500, 
-        pictureUrl: "url a insertar" }
+        image: "escritorio.png" }
 ]
 export default ListaDeProductos;
