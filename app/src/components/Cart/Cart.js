@@ -3,19 +3,17 @@ import { Link } from 'react-router-dom';
 import { Typography, Button, Card, ButtonGroup, Paper } from '@mui/material';
 import {CartContext} from "./CartContext";
 const Cart = () => {
-	const { carrito, vaciarCarrito, eliminarProducto, totalCompra } =
-	useContext(CartContext);
+	const { carrito, vaciarCarrito, eliminarProducto, totalCompra } = useContext(CartContext);
 	return (
 		<>
 			<Card>
 				{carrito.map((item) => {
 					return (
 						<Paper key={item.id}>
-							<Typography>Producto: {item.title}</Typography>
-							<Typography>Descripcion: {item.description}</Typography>
-							<Typography>Cantidad seleccionada: {item.quantity}</Typography>
-							<Typography>Precio unitario: {item.price}</Typography>
-							<Typography>Total: ${totalCompra()}</Typography>
+							<Typography variant="h6">Producto: {item.title}</Typography>
+							<Typography variant="h6">Descripcion: {item.description}</Typography>
+							<Typography variant="h6">Cantidad seleccionada: {item.quantity}</Typography>
+							<Typography variant="h6">Precio unitario: {item.price}</Typography>
 							<Button
 								onClick={() => {
 									eliminarProducto(item.id);
@@ -28,6 +26,7 @@ const Cart = () => {
 						</Paper>
 					);
 				})}
+				<Typography variant="h5">Total: ${totalCompra()}</Typography>
 			</Card>
 			{carrito.length > 0 ? (
 				<ButtonGroup variant="text" color="primary" aria-label="">
@@ -39,7 +38,7 @@ const Cart = () => {
 						Vaciar Carrito
 					</Button>
 					<Button variant="contained" color="success">
-						<Link to="/checkout">Terminar mi Compra</Link>
+						<Link to="/compra">Terminar mi Compra</Link>
 					</Button>
 				</ButtonGroup>
 			) : (

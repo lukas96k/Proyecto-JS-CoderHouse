@@ -1,8 +1,8 @@
-import ItemListContainer from './ItemListContainer';
+import ItemListContainer from './ItemList/ItemListContainer';
+import ItemDetailContainer from './ItemDetail/ItemDetailContainer';
+import Cart from './Cart/Cart';
+import {ProcesoCompra} from './Checkout/ProcesoCompra.js';
 import {Routes,Route} from 'react-router-dom';
-import ItemDetailContainer from './ItemDetailContainer';
-import Cart from './Cart';
-import {RegistroCompra} from './RegistroCompra';
 function Main() {
     return (
         <main>
@@ -11,7 +11,7 @@ function Main() {
                 <Route path="/categoria/:idSeccion" element={<ItemListContainer/>}/>
                 <Route path="/item/:idProd" element={<ItemDetailContainer/>}/>
                 <Route path="/cart" element={<Cart/>}/>
-                <Route path="/checkout" element={<RegistroCompra/>}/>
+                <Route path="/compra" element={<ProcesoCompra/>}/>
             </Routes>
         </main>
     );

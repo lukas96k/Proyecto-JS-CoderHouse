@@ -3,7 +3,7 @@ import ItemList from './ItemList';
 import {useParams} from "react-router-dom";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { Box } from '@mui/system';
-import { db } from './Firebase';
+import { db } from '../Firebase';
 import { CircularProgress } from '@mui/material';
 
 const ItemListContainer = () =>{

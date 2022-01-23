@@ -1,4 +1,4 @@
-import Item from './Item';
+import Item from '../Item/Item';
 import { memo } from 'react';
 import { Grid, Typography } from '@mui/material';
 const ItemList = ({productos}) =>{
